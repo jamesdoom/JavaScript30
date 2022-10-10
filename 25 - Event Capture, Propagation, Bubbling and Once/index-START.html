@@ -5,14 +5,12 @@
   <title>Understanding JavaScript's Capture</title>
 </head>
 <body class="bod">
-
   <div class="one">
     <div class="two">
       <div class="three">
       </div>
     </div>
-  </div>
-
+  </div> 
 <style>
   html {
     box-sizing: border-box;
@@ -39,9 +37,29 @@
     background: coral;
   }
 </style>
-
-<button></button>
+<button id="btn">Click!!!</button>
 <script>
+
+  const divs =  document.querySelectorAll('div');
+
+  function logText(e) {
+
+  console.log(this.classList.value);
+  //e.stopPropagation();
+  }
+
+divs.forEach(div => div.addEventListener('click', logText, {
+  capture: false,
+  once: true
+}));
+
+
+let button = document.getElementById("btn")
+button.addEventListener('click', () => {
+  console.log('Click!!!');
+}, {
+  once: true
+});
 
 </script>
 </body>
